@@ -1,0 +1,155 @@
+import java.util.*;
+
+public class MovieList 
+{
+
+
+    public static void main(String[] args)  
+
+    {
+        System.out.println("Welcome to the Movie List Application...");
+        System.out.println("There are 50 movie in the list which belong to 5 different categories(animated,drama,horror,scifi)");
+        String view = "v";
+        string favorite = "f"
+        string watchLater = "w"
+        string x 
+        Scanner sc = new Scanner(System.in);
+        
+        
+        
+        ArrayList<String> animated = new ArrayList<>();
+         animated.add("Robot Chicken");
+         animated.add("Family Guy");
+         animated.add("American Dad");
+         animated.add("Bob's Burgers");
+         animated.add("The Simpsons");
+         animated.add("Soul");
+         animated.add("Zootopia");
+         animated.add("Inside Out");
+         animated.add("Toy Story3");
+         animated.add("Toy Story4");
+         
+
+
+         ArrayList<String>drama = new ArrayList<>();
+         drama.add("John Q");
+         drama.add("The Green Mile");
+         drama.add("The Breakfast Club");
+         drama.add("The Shawshank Redemption");
+         drama.add("Braveheart");
+         drama.add("Forrest Gump");
+         drama.add("The Godfather");
+         drama.add("American Beauty");
+         drama.add("Batman Begins");
+         drama.add("The Godfather: Part II");
+
+         ArrayList<String> horror = new ArrayList<>();
+         drama.add("Scream");
+         drama.add("Carrie");
+         drama.add("Insideous");
+         drama.add("Insideous2");
+         drama.add("Sinister");
+         drama.add("Hereditary");
+         drama.add("The Conjuring");
+         drama.add("The Conjuring2");
+         drama.add("The Ring");
+         drama.add("the Shining");
+         
+
+         ArrayList<String> scifi = new ArrayList<>();
+         scifi.add("The Book of Eli");
+         scifi.add("Daybreakers");
+         scifi.add("Hunter Prey");
+         scifi.add("Predators");
+         scifi.add("Skyline");
+         scifi.add("Lightyear ");
+         scifi.add("Jurassic World Dominion");
+         scifi.add("Crimes of the Future");
+         scifi.add("Mad God");
+         scifi.add("Jurassic Park");
+         
+         
+         ArrayList<String> action = new ArrayList<>();
+         scifi.add(" Asuran");
+         scifi.add("Star Wars");
+         scifi.add("Harakiri");
+         scifi.add("Seven Samurai");
+         scifi.add("Raging Fire.");
+         scifi.add("No Time to Die ");
+         scifi.add("Spider-Man");
+         scifi.add("Riders of Justice");
+         scifi.add("The Paper Tigers");
+         scifi.add("John Wick");
+         
+         
+         
+          while(true))
+            {  
+                      System.out.print("for viewing movies list press v, for adding movie to favorite list press f, for adding movie to watch later list press w ");  
+                        if (x==v ) 
+                          {
+                                   // to view all movies on the site by the user 
+             
+                                     System.out.print("What category are you interested in?");
+        
+                                     String movielist = sc.nextLine();
+                                   switch (movielist) 
+                                        {
+                                            case "animated":
+                                                System.out.println(animated);
+                                                break;
+                                            case "drama":
+                                                System.out.println(drama);
+                                                break;
+                                            case "horror":
+                                                System.out.println(horror);
+                                                break;
+                                            case "scifi":
+                                                System.out.println(scifi);
+                                                break;
+                                            case "action":
+                                                System.out.println(action);
+                                                break;
+                                    
+                                        }
+                          }
+                          
+                          
+                        else if (x==f)
+                        
+                          {
+                            System.out.print("choose the name of movie you want to add to your favorite list");
+                    
+                            ArrayList<String> favList = new ArrayList<>();
+                            int name = scan.nextInt(); 
+        		            favList.add(name);   
+            
+                           }
+                           
+                          
+                        else if (x==w)
+                        
+                          {
+                            System.out.print("choose the name of movie you want to add to your favorite list");
+                    
+                            ArrayList<String> watchLater = new ArrayList<>();
+                            int name = scan.nextInt(); 
+        		            favList.add(name);   
+    
+                            }
+                            
+                        else ( )
+                             {
+                                 System.out.print("you have entered a wrong key, try again please");
+                
+                             }
+         
+         
+    
+    }
+    
+           
+}
+            
+
+
