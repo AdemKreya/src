@@ -1,0 +1,24 @@
+public class Currency {
+
+    // Two private data fields, one to hold the currency code and one to hold the exchange rate.
+    // Note that the exchange rate for the same currency could be different for different banks
+    private final String currencyCode;
+    private final double exchangeRate;
+
+    // A constructor that takes two arguments: the currency code and exchange rate.
+    // The constructor should assign the private members from the values of the arguments.
+    public Currency(String currencyCode, double currencyExchangeRate) {
+        this.currencyCode = currencyCode;
+        this.exchangeRate = currencyExchangeRate;
+
+    }
+
+    // An accessor method (getter) for each data field.
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    public double getExchangeRate() {
+        return exchangeRate;
+    }
+}

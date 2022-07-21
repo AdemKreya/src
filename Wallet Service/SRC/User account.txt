@@ -1,0 +1,67 @@
+mport java.io.*;
+import java.util.*;
+
+public class Bank {
+
+    // Five private data fields: The name of the bank, The commission rate, Three fields for the three currencies exchanged by the bank.
+    // Each of these should have type Currency.
+    private String bankName;
+    private double commissionRate;
+    private Currency currencyCode1;
+    private Currency currencyCode2;
+    private Currency currencyCode3;
+
+    public Bank(String fileA) throws FileNotFoundException {
+        File bankFile = new File(fileA);
+        Scanner keyboard = new Scanner(System.in);
+
+        this.bankName = keyboard.nextLine();
+        this.commissionRate = Double.parseDouble((keyboard.nextLine()));
+        this.currencyCode1 = new Currency(keyboard.next(), Double.parseDouble(keyboard.next()));
+        this.currencyCode2 = new Currency(keyboard.next(), Double.parseDouble(keyboard.next()));
+        this.currencyCode3 = new Currency(keyboard.next(), Double.parseDouble(keyboard.next()));
+
+        keyboard.close();
+    }
+
+    public boolean supportCurrency(String currencyCode) {
+        return currencyCode.equalsIgnoreCase(currencyCode1.getCurrencyCode())
+                || currencyCode.equalsIgnoreCase(currencyCode2.getCurrencyCode())
+                || currencyCode.equalsIgnoreCase(currencyCode3.getCurrencyCode());
+    }
+
+    // Working on getRate method.
+    public double getRate(String currencyCode) {
+        double bankExchangeRate = -1.0;
+                if (currencyCode.equalsIgnoreCase(currencyCode1.getCurrencyCode())) {
+                    bankExchangeRate = currencyCode1.getExchangeRate();
+                }
+                else if (currencyCode.equalsIgnoreCase(currencyCode2.getCurrencyCode())) {
+                    bankExchangeRate = currencyCode2.getExchangeRate();
+                }
+                else if (currencyCode.equalsIgnoreCase(currencyCode3.getCurrencyCode())) {
+                    bankExchangeRate = currencyCode3.getExchangeRate();
+        }
+
+        return bankExchangeRate; //return -1.0
+    }
+
+    public Quote quoteBuy(double amt, String currencyCode) {
+        double rate = getRate(currencyCode);
+        Quote quote;
+
+        if(rate == -1.0) {
+            quote = null;
+        }
+        else {
+            double userOwes = amt / (rate * (1 - commissionRate)); // This calculates the commission amount based on the dollar amount.
+            double commission = userOwes * commissionRate;
+            quote = new Quote(bankName, "USD", userOwes, currencyCode, amt, commissionRate, commission);
+        }
+
+        return quote;
+    }
+
+    public Quote quoteSell(double amt, String currencyCode) {
+        double rate = getRate(currencyCode);
+        Quote quote;

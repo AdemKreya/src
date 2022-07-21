@@ -1,0 +1,85 @@
+import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.util.*;
+
+public class CurrencyExchange {
+
+    public static void main(String [] args) throws FileNotFoundException {
+        //Create 2 bank objects, one for each file "bank1.txt" & "bank2.txt"
+        Bank bank1 = new Bank("bank1.txt");
+        Bank bank2 = new Bank("bank2.txt");
+        int userCont = 0;
+
+        do {
+            boolean buy = false;
+            double amount;
+            int banksSupported = 0;
+            String currencyCode;
+            Scanner keyboard = new Scanner(System.in);
+            String userAnswer;
+
+        //Ask user to buy or sell - use continue to repeat loop if invalid
+        System.out.println("Do you want to buy or sell?");
+            userAnswer = keyboard.nextLine();
+            if (!userAnswer.equalsIgnoreCase("buy") && (!userAnswer.equalsIgnoreCase("sell")) ) {
+                System.out.println("Invalid response. Please enter buy or sell. ");
+                continue;
+            }
+            if (userAnswer.equalsIgnoreCase("buy")) {
+                buy = true;
+            }
+
+        //Ask user for foreign currency - use continue to repeat loop if invalid
+        System.out.println("Which currency would you like to use?");
+            currencyCode = keyboard.nextLine().toUpperCase();
+
+        //Check and Print how many banks support the users currency - use continue to repeat loop if none
+            if(bank1.supportCurrency(currencyCode))
+                ++banksSupported;
+            if(bank2.supportCurrency(currencyCode))
+                ++banksSupported;
+
+            if (banksSupported == 0) {
+                System.out.println("There are no banks the support " + currencyCode + ". Please enter a different currency.");
+                continue;
+            }
+            else if (banksSupported == 1) {
+                System.out.println("One bank supports " + currencyCode + ".");
+            }
+            else {
+                System.out.println("Two banks support " + currencyCode + ".");
+            }
+
+        //Prompt the user for the amount of foreign currency and get the user input
+        System.out.println(" What amount of " + currencyCode + "?");
+            amount = keyboard.nextDouble();
+
+        //Use the quoteBuy or quoteSell methods of the Bank objects to get a Quote from every bank supporting the foreign currency.
+
+        //Print the quote(s) from the bank(s), using the toString method of the Quote object(s).
+        if(buy) {
+            if (bank1.supportCurrency(currencyCode)) {
+                System.out.println(bank1.quoteBuy(amount, currencyCode));
+            }
+            if (bank2.supportCurrency(currencyCode)) {
+                System.out.println(bank2.quoteBuy(amount, currencyCode));
+            }
+        }
+        else {
+            if (bank1.supportCurrency(currencyCode)) {
+                System.out.println(bank1.quoteBuy(amount, currencyCode));
+            }
+            if (bank2.supportCurrency(currencyCode)) {
+                System.out.println(bank2.quoteBuy(amount, currencyCode));
+            }
+        }
+
+        //Use the console to prompt the user for another transaction.
+            userCont = JOptionPane.showConfirmDialog(null, "Would you like to preform another transaction?", "Contniue", JOptionPane.YES_NO_OPTION);
+
+    } while(userCont == 0); // while ( the user wants to continue performing transactions )
+
+
+
+    }
+}
